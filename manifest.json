@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "AtCoder page mover using arrow keys",
+    "description": {
+        "en": "Use the arrow keys to move between AtCoder problem pages.",
+        "ja": "方向キーでAtCoderの問題ページを移動する"
+    },
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "js": [
+                "content.js"
+            ],
+            "matches": [
+                "https://atcoder.jp/contests/*/tasks/*"
+            ]
+        }
+    ]
+}
