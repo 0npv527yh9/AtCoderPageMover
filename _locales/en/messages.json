@@ -1,0 +1,10 @@
+{
+    "extensionName": {
+        "message": "AtCoder page mover using arrow keys",
+        "description": "Name of the extension."
+    },
+    "extensionDescription": {
+        "message": "Use the arrow keys to move between AtCoder problem pages.",
+        "description": "Description of the extension."
+    }
+}

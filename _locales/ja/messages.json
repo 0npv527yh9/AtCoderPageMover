@@ -1,0 +1,10 @@
+{
+    "extensionName": {
+        "message": "AtCoder問題ページを方向キーで移動",
+        "description": "Name of the extension."
+    },
+    "extensionDescription": {
+        "message": "AtCoderの問題ページを方向キーで移動する",
+        "description": "Description of the extension."
+    }
+}
