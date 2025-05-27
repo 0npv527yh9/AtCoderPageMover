@@ -4,14 +4,20 @@ const keyBind = { ArrowRight: incr, ArrowLeft: decr };
 
 // Add event handler for page move to listener
 window.addEventListener('keydown', async function (event) {
-    if (!(event.key in keyBind)) {
+    const url = location.href;
+
+    const textarea = document.querySelector('#editor > textarea');
+
+    let newTask;
+    if (event.key in keyBind) {
+        const task = url.slice(-1);
+        newTask = keyBind[event.key](task);
+    } else if ('a' <= event.key && event.key <= 'z' && !event.ctrlKey && !event.altKey && !event.metaKey && !textarea.matches(':focus')) {
+        newTask = event.key;
+    } else {
         return;
     }
 
-    const url = location.href;
-    const task = url.slice(-1);
-
-    const newTask = keyBind[event.key](task);
     const newUrl = url.slice(0, -1) + newTask;
 
     // Move to the next/previous page if it exists.
@@ -38,5 +44,5 @@ async function existsUrl(url) {
         return response.ok;
     } catch {
         return false;
-    } 
+    }
 }
