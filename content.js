@@ -6,13 +6,15 @@ const keyBind = { ArrowRight: incr, ArrowLeft: decr };
 window.addEventListener('keydown', async function (event) {
     const url = location.href;
 
-    const textarea = document.querySelector('#editor > textarea');
+    if (isElementFocused()) {
+        return;
+    }
 
     let newTask;
     if (event.key in keyBind) {
         const task = url.slice(-1);
         newTask = keyBind[event.key](task);
-    } else if ('a' <= event.key && event.key <= 'z' && !event.ctrlKey && !event.altKey && !event.metaKey && !textarea.matches(':focus')) {
+    } else if ('a' <= event.key && event.key <= 'z' && !event.ctrlKey && !event.altKey && !event.metaKey) {
         newTask = event.key;
     } else {
         return;
@@ -45,4 +47,9 @@ async function existsUrl(url) {
     } catch {
         return false;
     }
+}
+
+function isElementFocused() {
+    const el = document.activeElement;
+    return el && el !== document.body && el !== document.documentElement;
 }
